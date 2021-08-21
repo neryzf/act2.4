@@ -7,10 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HOME</h1>
-    <p1>Bienvenido a esta pagina de prieba realizada en Django</p1><br>
+    <h1>Administradores</h1>
+    <tr>     
+        <th>1</th>      
+        <td>Nery</td>      
+        <td>Ingenieria en Sistemas</td>      
+      </tr>
+<br>
+      <tr>
+          <th>2</th>      
+          <td>Orozco</td>      
+          <td>Ingenieria Civil</td>      
+      </tr>
+<br>
     <a href="{% url 'app1:creditos' %}">A cerca De:</a><br>
     <a href="{% url 'app1:estudiantes' %}">Estudiantes</a><br>
-    <a href="{% url 'app1:administradores' %}">administradores</a><br>
+    <a href="{% url 'app1:home' %}">home</a><br>
 </body>
 </html>
