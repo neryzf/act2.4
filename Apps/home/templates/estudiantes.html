@@ -1,27 +1,153 @@
-<!DOCTYPE html>
+{%load static%}
+<!doctype html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="http://code.jquery.com/jquery.js%22%3E"></script>
+    <script src="js/bootstrap.min.js"></script>
+	{% block titulo%}
+	<title>Estudiantes</title>
+	{%endblock%}
+
 </head>
 <body>
-    <h1>Estudiantes</h1>
-    <tr>     
-        <th>1</th>      
-        <td>Nery</td>      
-        <td>Ingenieria en Sistemas</td>      
-      </tr>
-<br>
-      <tr>
-          <th>2</th>      
-          <td>Orozco</td>      
-          <td>Ingenieria Civil</td>      
-      </tr>
-<br>
-    <a href="{% url 'app1:creditos' %}">A cerca De:</a><br>
-    <a href="{% url 'app1:administradores' %}">Administradores</a><br>
-    <a href="{% url 'app1:home' %}">home</a><br>
+	<div class="container-css" style="background-color: yellow;">
+
+        
+		<div class="alert alert-danger" role="alert">
+			{% block encabezado%}
+            <h1>Agregar Estudiantes</h1>
+			{%endblock%}
+		</div>
+       <nav>
+        <ul class="nav  nav-pills nav-justified">
+            <li class="nav-item">
+                <a href="{% url 'app1:home' %}" class="nav-item nav-link active">Articulos  </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'app1:estudiantes' %}" class="badge badge-dark">Estudiantes   </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'app1:administradores' %}" class="badge badge-dark">Administradores  </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'app1:creditos' %}" class="badge badge-dark"> Comentarios </a>
+            </li>
+        </ul>
+    </div>
+       </nav>
+
+	<section class="fh5co-about-me">
+		<div class="about-me-inner site-container">
+			<article class="portfolio-wrapper">
+				<div class="portfolio__img">
+					<img src="{%static './images/about-me.jpg'%}" class="about-me__profile" alt="about me profile picture">
+				</div>
+				<div class="portfolio__bottom">
+					<div class="portfolio__name">
+						<span>N</span>
+						<h2 class="universal-h2">ery Zacarias</h2>
+					</div>
+					<p>Nery Juan Luis Zacarias 0903-18-23463</p>
+				</div>
+			</article>
+			<div class="about-me__text">
+				<div class="about-me-slider">
+					<div class="about-me-single-slide">
+						<h2 class="universal-h2 universal-h2-bckg">Acerca de mi</h2>
+						<p><span>E</span> studiante de la Universidad Mariano Gálvez de Guatemala, Octavo semestre en ingenieria en Sistemas originario de San Pedro Sacatepequez San marcos.</p>
+						<h4>Desarrollador</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="about-me-bckg"></div>
+	</section>
+	<!-- About me end -->
+	
+	
+
+	<!-- Books and CD end -->
+	
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="site-container">
+			<div class="footer-inner">
+				<div class="footer-info">
+					<div class="footer-info__left">
+						<img src="{%static './images/footer-img.jpg'%}" alt="about me image">
+						<p>lea más sobre mi</p>
+					</div>
+					<div class="footer-info__right">
+						<h5>Contacteme</h5>
+						<p class="footer-phone">Phone: +50242995648</p>
+						<p>Email : nzacariasf@miumg-edu.gt</p>
+						<div class="social-icons">
+							<a href="#" target="_blank"><img src="{%static './images/social-twitter.png'%}" alt="social icon"></a>
+							<a href="#" target="_blank"><img src="{%static './images/social-pinterest.png'%}" alt="social icon"></a>
+							<a href="#" target="_blank"><img src="{%static './images/social-youtube.png'%}" alt="social icon"></a>
+							<a href="#" target="_blank"><img src="{%static './images/social-twitter.png'%}" alt="social icon"></a>
+						</div>
+					</div>
+				</div>
+				<div class="footer-contact-form">
+					<h5>Formulario para Registrar</h5>
+					{% block contenido%}
+	<form method="POST" >
+		{%csrf_token%}
+		{%if error%}
+		<h2> {{error}} </h2>
+		{%else%}
+		<h3>Agregar Estudiante</h3>
+		<div>
+			<form class="contact-form" action="#" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="contact-form__input">
+					<div>{{form.nombre.label}} </div>
+					<div>{{form.nombre}}</div>
+				</div>
+				<div>
+					<div>{{form.apellido.label}} </div>
+					<div>{{form.apellido}}</div>
+				</div>
+				<div>
+					<div>{{form.direccion.label}} </div>
+					<div>{{form.direccion}}</div>
+				</div>
+					<button type="submit" name="Enviar">Ingresar</button>
+			</form>
+		</div>
+		<a href="{% url 'app1:listar_est' %}">Ver Listado de Estudiantes</a>
+	</form>
+		{%endif%}
+		{% endblock%}
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="site-container footer-bottom-inner">
+				<p>© 2019 Author | Design by <a href="https://freehtml5.co/" target="_blank">freehtml5.co</a> | All rights Reserved.</p>
+				<div class="footer-bottom__img">
+					<img src="{%static './images/footer-mastercard.png'%}" alt="footer image">
+					<img src="{%static './images/footer-paypal.png'%}" alt="footer image">
+					<img src="{%static './images/footer-visa.png'%}" alt="footer image">
+					<img src="{%static './images/footer-fedex.png'%}" alt="footer image">
+					<img src="{%static './images/footer-dhl.png'%}" alt="footer image">
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer end -->
+
+	<!-- Scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

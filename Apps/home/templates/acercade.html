@@ -1,17 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>A cerca de:</h2>
-    <h3>Nombre: Nery Juan Luis Zacarias Fuentes </h3>
-    <h3>Desarrollador</h3>
-    <a href="{% url 'app1:administradores' %}">Administradores</a><br>
-    <a href="{% url 'app1:estudiantes' %}">Estudiantes</a><br>
-    <a href="{% url 'app1:home' %}">home</a><br>
-</body>
-</html>
+{% extends 'estudiantes.html' %}
+{% block titulo%}
+	<title>Comentarios</title>
+	{%endblock%}
+
+    {% block encabezado%}
+    <h1>Agregar Comentarios</h1>
+    {%endblock%}
+
+{% block contenido%}
+
+
+{%csrf_token%}
+{%if error%}
+<h2> {{error}} </h2>
+{%else%}
+<div>
+    <h3>Agregar un Comentario</h3>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <div>
+            <div>{{form.contenido.label}} </div>
+            <div>{{form.contenido}}</div>
+        </div>
+        <div>
+            <div>{{form.nombre.label}} </div>
+            <div>{{form.nombre}}</div>
+        </div>
+            <button type="submit" name="Enviar">Ingresar</button>
+    </form>
+</div>
+<a href="{% url 'app1:listar_com' %}">Ver Listado de Comentarios</a>
+{%endif%}
+</form>
+
+{% endblock%}
