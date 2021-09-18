@@ -11,25 +11,25 @@ class HomeView(CreateView):
     model=Articulos
     form_class=FormArticulos
     template_name='index.html'
-    success_url=reverse_lazy('app1:home')
+    success_url=reverse_lazy('app1:listar_art')
 
 class CreditosView(CreateView):
     model=Comentarios
     form_class=FormComentarios
     template_name='acercade.html'
-    success_url=reverse_lazy('app1:creditos')
+    success_url=reverse_lazy('app1:listar_com')
 
 class estudiantesView(CreateView):
     model=Estudiante
     form_class=FormEstudiante
     template_name='estudiantes.html'
-    success_url=reverse_lazy('app1:estudiantes')
+    success_url=reverse_lazy('app1:listar_est')
 
 class administradoresView(CreateView):
     model=Admins
     form_class=FormAdministradores
     template_name='administradores.html'
-    success_url=reverse_lazy('app1:administradores')
+    success_url=reverse_lazy('app1:listar_adm')
 
 class ListarEstudiante(ListView):
     template_name= 'listar_est.html'
